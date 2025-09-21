@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - EarnHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./shared.js"></script>
+  <script defer src="./profile.js"></script>
+  <style>
+    /* ✅ Navbar Styling */
+    .navbar {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      padding: 15px;
+      text-align: center;
+      border-radius: 0 0 12px 12px;
+      position: relative;
+    }
+
+    .nav-brand a {
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Desktop Menu */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .nav-links a.active {
+      background: rgba(255, 255, 255, 0.35);
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      margin-top: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 5px auto;
+      border-radius: 4px;
+    }
+
+    /* ✅ Mobile Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        margin-top: 15px;
+        gap: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar">
+        <div class="nav-brand">
+          <a href="./dashboard.html">EarnHub</a>
+        </div>
+
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./plans.html">Plans</a>
+          <a href="./profile.html" class="active">Profile</a>
+          <a href="./withdraw.html">Withdraw</a>
+          <a href="./logout.html">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="form-container" style="max-width: 600px;">
+        <h2 style="text-align: center; margin-bottom: 2rem;">My Profile</h2>
+        <div id="message"></div>
+        <form id="profile-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" disabled style="opacity: 0.6;">
+            <small style="color: rgba(255,255,255,0.7);">Username cannot be changed</small>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" disabled style="opacity: 0.6;">
+            <small style="color: rgba(255,255,255,0.7);">Email cannot be changed</small>
+          </div>
+          <div class="form-group">
+            <label for="full_name">Full Name *</label>
+            <input type="text" id="full_name" required placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label for="jazzcash_number">JazzCash Number</label>
+            <input type="text" id="jazzcash_number" placeholder="Enter your JazzCash number for withdrawals">
+            <small style="color: rgba(255,255,255,0.7);">Required for withdrawals</small>
+          </div>
+
+          <hr style="border: 1px solid rgba(255,255,255,0.2); margin: 2rem 0;">
+          <h3 style="margin-bottom: 1rem;">Change Password (Optional)</h3>
+          <div class="form-group">
+            <label for="current_password">Current Password</label>
+            <input type="password" id="current_password" placeholder="Enter your current password">
+          </div>
+          <div class="form-group">
+            <label for="new_password">New Password</label>
+            <input type="password" id="new_password" placeholder="Enter new password (minimum 6 characters)">
+          </div>
+          <div class="form-group">
+            <label for="confirm_new_password">Confirm New Password</label>
+            <input type="password" id="confirm_new_password" placeholder="Confirm new password">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Update Profile</button>
+        </form>
+
+        <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+          <h4>Account Statistics</h4>
+          <p>Current Balance: <strong id="stat-balance">Rs. 0.00</strong></p>
+          <p>Total Earned: <strong id="stat-total-earned">Rs. 0.00</strong></p>
+          <p>Member Since: <strong id="stat-created-at">-</strong></p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // ✅ Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

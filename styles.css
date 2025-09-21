@@ -1,0 +1,378 @@
+/* =========================
+   GLOBAL RESET & BASE
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  min-height: 100vh;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a.active {
+  color: #4ECDC4;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #ff7a18, #af002d);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   MESSAGES
+========================= */
+.message {
+  margin-bottom: 1rem;
+  padding: .75rem 1rem;
+  border-radius: 8px;
+}
+
+.message.error {
+  background: #ff4d4f22;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b55;
+}
+
+.message.success {
+  background: #1dd1a122;
+  color: #1dd1a1;
+  border: 1px solid #1dd1a155;
+}
+
+.hidden { display: none !important; }
+.visible { display: block !important; }
+.ad-disabled { opacity: .6; pointer-events: none; }
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+}
+
+/* =========================
+   GRID
+========================= */
+.dashboard-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 2rem;
+}
+
+/* =========================
+   PLAN CARDS
+========================= */
+.dashboard-card {
+  background: linear-gradient(145deg, #2d2dff, #6a11cb);
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.25);
+}
+
+.dashboard-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #4ECDC4;
+}
+
+.dashboard-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.dashboard-card h4 {
+  font-size: 2rem;
+  color: #1df3a7;
+  margin: 1rem 0;
+  font-weight: 800;
+}
+
+/* Plan details box */
+.plan-details {
+  margin: 1rem 0;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.plan-details p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.3rem 0;
+  font-weight: 500;
+}
+
+.plan-details p span {
+  font-weight: 700;
+  color: #ffe97f;
+}
+
+.roi {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  color: #ffdf43;
+}
+
+/* Buy Button */
+.buy-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.buy-btn:hover {
+  background: linear-gradient(to right, #ee0979, #ff6a00);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   ADMIN UI
+========================= */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.admin-stat {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.admin-stat-label {
+  color: rgba(255,255,255,0.7);
+  font-size: .9rem;
+  margin-bottom: 6px;
+}
+
+.admin-stat-value {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* =========================
+   TABLES
+========================= */
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.table-container table thead th {
+  background: rgba(255,255,255,0.08);
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.table-container table tbody td {
+  padding: 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.table-container table tbody tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Action buttons */
+.btn-edit { background: #54a0ff; }
+.btn-edit:hover { background: #2e86de; }
+
+.btn-delete,
+.btn-reject { background: #ff6b6b; }
+.btn-delete:hover,
+.btn-reject:hover { background: #ee5253; }
+
+.btn-approve { background: #1dd1a1; }
+.btn-approve:hover { background: #10ac84; }
+
+.btn-edit,
+.btn-delete,
+.btn-approve,
+.btn-reject {
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   STATUS
+========================= */
+.status {
+  font-weight: 600;
+}
+
+.status small {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  color: #ffbaba;
+}
+
+/* =========================
+   MODALS
+========================= */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.modal-content input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}

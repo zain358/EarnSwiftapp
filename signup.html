@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EarnHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./shared.js"></script>
+    <script defer src="./signup.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <h2><a href="./index.html" style="color: white; text-decoration: none;">EarnHub</a></h2>
+                </div>
+                <div class="nav-links" id="nav-links"></div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Create Account</h2>
+                <div id="message"></div>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="username">Username *</label>
+                        <input type="text" id="username" required placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="full_name">Full Name *</label>
+                        <input type="text" id="full_name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" required placeholder="Enter your password (minimum 6 characters)">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password *</label>
+                        <input type="password" id="confirm_password" required placeholder="Confirm your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Already have an account? <a href="./login.html" style="color: #4ECDC4;">Login here</a>
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
+
